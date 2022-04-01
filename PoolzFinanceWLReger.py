@@ -16,6 +16,12 @@ class WrongResponse(Exception):
 		super().__init__(f'Wrong response, code: {str(message.status_code)}, response: {str(message.text)}')
 
 
+class WrongAddressFormat(Exception):
+	def __init__(self, message):
+		super().__init__(f'Wrong string format: {message}')
+
+
+
 disable_warnings()
 def clear(): return system('cls')
 logger.remove()
@@ -55,12 +61,6 @@ threads = int(input('Threads: '))
 
 with open (addresses_folder, 'r') as file:
 	addresses = [row.strip() for row in file]
-
-
-class WrongAddressFormat(Exception):
-	def __init__(self, message):
-		super().__init__(f'Wrong string format: {message}')
-
 
 
 def mainth(wallet_data_file):
